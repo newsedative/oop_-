@@ -1,0 +1,58 @@
+// lab1.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
+//
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    setlocale(LC_ALL, "Russian");
+    int number_1;
+    char char_1;
+    wchar_t wchar_1;
+    bool bool_1;
+    float float_1;
+    double double_1;
+
+    struct Students
+    {
+        char* Name;
+        int Age;
+        float ball;
+    };
+
+    cout << "Количество байт для целого типа  int = " << sizeof(number_1) << endl;
+    cout << "Количество байт для символьный типа  char = " << sizeof(char_1) << endl;
+    cout << "Количество байт для расширенный символьный типа wchar_t = " << sizeof(wchar_1) << endl;
+    cout << "Количество байт для логический типа bool = " << sizeof(bool_1) << endl;
+    cout << "Количество байт для вещественный типа float = " << sizeof(float_1) << endl;
+    cout << "Количество байт для вещественный с двойной точностью типа double = " << sizeof(double_1) << endl;
+    
+    //структура 
+
+    
+    Students s;
+
+    cout << "Количество байт для структуры = " << sizeof(s) << endl;
+
+    //преобразование
+
+    number_1 = 5;
+    cout << "Преобразование int number_1 в тип float: " << float(number_1) << endl;
+    cout << "Преобразование int number_1 в тип char: " << char(number_1) << endl;
+    cout << "Преобразование int number_1 в тип bool: " << bool(number_1) << endl;
+
+    // перечеслимый тип
+
+    enum day { понедльник, вторник, среда };
+    enum months { may=5, june=6, july=7 };
+
+    day mn;
+    mn = понедльник;
+    cout << "присвоить значение переменной mn: " << mn << endl;
+    cout << "Количество байт для enum с инициализацией констант: " << sizeof(day) << "\n" << "Количество байт для enum без инициализацией констант: " << sizeof(months) << endl;
+
+
+}
+
+
