@@ -18,7 +18,7 @@ int main()
     {
         char* Name;
         int Age;
-        float ball;
+        float Ball;
     };
 
     cout << "Количество байт для целого типа  int = " << sizeof(number_1) << endl;
@@ -26,21 +26,40 @@ int main()
     cout << "Количество байт для расширенный символьный типа wchar_t = " << sizeof(wchar_1) << endl;
     cout << "Количество байт для логический типа bool = " << sizeof(bool_1) << endl;
     cout << "Количество байт для вещественный типа float = " << sizeof(float_1) << endl;
-    cout << "Количество байт для вещественный с двойной точностью типа double = " << sizeof(double_1) << endl;
+    cout << "Количество байт для вещественный с двойной точностью типа double = " << sizeof(double_1) << "\n" << endl;
     
     //структура 
 
-    
     Students s;
 
-    cout << "Количество байт для структуры = " << sizeof(s) << endl;
+    cout << "Количество байт для структуры s = " << sizeof(s) << endl;
+    cout << "Количество байт для имени в структуре = " << sizeof(s.Name) << endl;
+    cout << "Количество байт для возраста в структуре = " << sizeof(s.Age) << endl;
+    cout << "Количество байт для балла в структуре = " << sizeof(s.Ball) << "\n" << endl;
+
+
+    cout << "\n" << endl;
+
+    struct Students1
+    {
+        unsigned char* Name;
+        uint16_t Age;
+        float Ball;
+    };
+    Students1 s1;
+    cout << "Количество байт для структуры s1 = " << sizeof(s) << endl;
+    cout << "Количество байт для имени в структуре = " << sizeof(s.Name) << endl;
+    cout << "Количество байт для возраста в структуре = " << sizeof(s.Age) << endl;
+    cout << "Количество байт для балла в структуре = " << sizeof(s.Ball) << "\n" << endl;
+
 
     //преобразование
 
     number_1 = 5;
+    cout << "number_1 = 5" << endl;
     cout << "Преобразование int number_1 в тип float: " << float(number_1) << endl;
     cout << "Преобразование int number_1 в тип char: " << char(number_1) << endl;
-    cout << "Преобразование int number_1 в тип bool: " << bool(number_1) << endl;
+    cout << "Преобразование int number_1 в тип bool: " << bool(number_1) << "\n" << endl;
 
     // перечеслимый тип
 
@@ -54,5 +73,3 @@ int main()
 
 
 }
-
-
