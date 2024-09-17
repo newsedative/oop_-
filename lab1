@@ -68,3 +68,42 @@ int main()
     // Механизм определения типа объекта в реальном времени (RTTI)
     cout << "Имя типа = " << typeid(a).name() << endl;
 }
+
+
+
+
+
+// adding
+
+// ConsoleApplication1.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
+//
+
+#include <iostream>
+using namespace std;
+
+int main()
+
+{
+	char char_1 = 'a';
+	double new_d = 0;
+	
+	cout << char_1 + new_d << endl;
+
+	enum Month { понедельник, вторник, среда };
+
+	Month mn;
+	mn = понедельник;
+	cout << mn << endl;
+
+	typedef enum { Male, Famale } TPol;
+
+	struct Student {
+		unsigned short Age;
+		TPol pol;
+		float Ball;
+		
+	};
+	Student s;
+	cout << sizeof(s.pol) << endl;
+}
+
