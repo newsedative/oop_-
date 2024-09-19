@@ -107,3 +107,21 @@ int main()
 	cout << sizeof(s.pol) << endl;
 }
 
+
+
+/*
+    void calc(int n1, int n2, operations op);
+
+    enum operations {Plus,  Minus, Divide };
+
+    void calc(int n1, int n2, operations op)
+    {
+        switch (op)
+        {
+            case operations::Plus:
+                return n1 + n2;
+            case operations::Minus:
+                return n1 - n2;
+        }
+    }
+    cout << calc(1, 2, operations::Plus) << endl; */
