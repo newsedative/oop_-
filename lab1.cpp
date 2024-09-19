@@ -73,55 +73,34 @@ int main()
 
 
 
-// adding
-
-// ConsoleApplication1.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
-//
+/*
 
 #include <iostream>
 using namespace std;
 
-int main()
 
+enum operations { Plus, Minus, Divide };
+void calc(int n1, int n2, operations op);
+int result;
+
+void calc(int n1, int n2, operations op)
 {
-	char char_1 = 'a';
-	double new_d = 0;
-	
-	cout << char_1 + new_d << endl;
-
-	enum Month { понедельник, вторник, среда };
-
-	Month mn;
-	mn = понедельник;
-	cout << mn << endl;
-
-	typedef enum { Male, Famale } TPol;
-
-	struct Student {
-		unsigned short Age;
-		TPol pol;
-		float Ball;
-		
-	};
-	Student s;
-	cout << sizeof(s.pol) << endl;
+    switch (op)
+    {
+    case operations::Plus:
+        result = n1 + n2;
+        break;
+    case operations::Minus:
+        result = n1 - n2;
+        break;
+    }
 }
 
+int main()
+{
+    setlocale(LC_ALL, "Russian");
+    
+    calc(1, 2, operations::Plus);
+    cout << result << endl;
 
-
-/*
-    void calc(int n1, int n2, operations op);
-
-    enum operations {Plus,  Minus, Divide };
-
-    void calc(int n1, int n2, operations op)
-    {
-        switch (op)
-        {
-            case operations::Plus:
-                return n1 + n2;
-            case operations::Minus:
-                return n1 - n2;
-        }
-    }
-    cout << calc(1, 2, operations::Plus) << endl; */
+} */
