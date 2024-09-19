@@ -31,9 +31,17 @@ result calc(float x, float e) {
 }
 
 
-void main() {
+int main() {
+	setlocale(LC_ALL, "Russian");
 	double x_start, x_end, dx, e;
-	cin >> x_start >> x_end >> dx >> e;
+	cout << "Введите Xнач:";
+	cin >> x_start;
+	cout << "Введите Xкон:";
+	cin >> x_end;
+	cout << "Введите шаг:";
+	cin >> dx;
+	cout << "Введите точность:";
+	cin >> e;
 	cout << "Calculating e^(-x) from " << x_start << " to " << x_end << " with step " << dx << endl;
 	cout << setw(10) << "x" << setw(10) << "e^(-x)" << setw(10) << "n" << endl;
 	while (x_start <= x_end) {
