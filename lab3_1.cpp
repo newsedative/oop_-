@@ -7,13 +7,14 @@ using namespace std;
 int main()
 {
     setlocale(LC_ALL, "Russian");
+
     const int N = 20;
-    int mas[N] = { 3, 9, -4, 3323, 43434, -199, 33, 23, 3, 4, 4, 667, 9, 3, 1, 78, 6, -23, 19, 20 };
+    int mas[N] = { 3, 9, -4, 3323, 0, 1, 2, 3, 4, 5, 0, 667, 9, -3, 0, 78, 6, -23, 19, 0 };
 
     int composition = 1;
 
     cout << "Заданный массив: ";
-    for (int i = 0; i < size(mas); i++) {
+    for (int i = 0; i < N; i++) {
         cout << mas[i] << ", ";
         if (i % 2 == 0) {
             composition *= mas[i];
@@ -22,27 +23,24 @@ int main()
     cout << endl;
     cout << "Произведение: " << composition << endl;
 
-    int mas1[N] = { 3, 9, -4, 3323, 0, 1, 2, 3, 4, 5, 0, 667, 9, -3, 0, 78, 6, -23, 19, 0 };;
     int sum_without_zero = 0;
     bool flag = false;
 
-    cout << "Заданный массив: ";
-
-    for (int i = 0; i < size(mas1); i++) {
-        cout << mas1[i] << ", ";
+    for (int i = 0; i < N; i++) {
         if (flag) {
-            if (mas1[i] == 0) {
+            if (mas[i] == 0) {
                 break;
             };
-            sum_without_zero += mas1[i];
+            sum_without_zero += mas[i];
         };
-        if (mas1[i] == 0) {
+        if (mas[i] == 0) {
             flag = true;
         };
     };
     cout << endl;
     cout << "Сумма элементов массива, расположенных между первым и последним нулевым элементами: " << sum_without_zero << endl;
 
+    cout << endl;
     cout << "Преобразование массива: " << endl;
 
 
@@ -54,5 +52,5 @@ int main()
     1.	количество столбцов, содержащих хотя бы один нулевой элемент:
     2.	номер строки, в которой находится самая длинная серия одинаковых элементов.
     */
-    
+
 };
