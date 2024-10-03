@@ -26,4 +26,14 @@ int main()
     typedef days* ptr_days = &days;
     cout << *ptr_days << endl;
 
+    
+    //task 3
+    struct Student 
+    {
+        string Name;
+        int Age;
+        float Ball;
+    };
+    Student stud = {'Ben', 19, 5};
+    Student* ptr_stud = &stud;
 };
