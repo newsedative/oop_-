@@ -9,7 +9,7 @@ int main()
     setlocale(LC_ALL, "Russian");
 
     const int N = 20;
-    int mas[N][N] = { 3, 9, -4, 3323, 0, 1, 2, 3, 4, 5, 0, 667, 9, -3, 0, 78, 6, -23, 19, 0 };
+    int mas[N] = { 3, 9, -4, 3323, 0, 1, 2, 3, 4, 5, 0, 667, 9, -3, 0, 78, 6, -23, 19, 0 };
 
     int composition = 1;
 
