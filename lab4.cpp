@@ -9,7 +9,7 @@ int main()
 
     //task 1
     int num = 12;
-    int *ptr_num = &num;
+    int* ptr_num = &num;
     cout << "Значение указателя ptr_num - " << *ptr_num << ", Адрес указателя - " << ptr_num << endl;
 
     bool flag = true;
@@ -22,18 +22,54 @@ int main()
 
 
     //task 2
-    enum days { Monday, Tuesday, Wednesday };
+    /*enum days { Monday, Tuesday, Wednesday };
     typedef days* ptr_days = &days;
-    cout << *ptr_days << endl;
+    cout << *ptr_days << endl;*/
 
-    
+
     //task 3
-    struct Student 
+    struct Student
     {
         string Name;
         int Age;
         float Ball;
     };
-    Student stud = {'Ben', 19, 5};
-    Student* ptr_stud = &stud;
+    Student s1 = {"Misha", 23, 8};
+    Student* ptr_student = &s1;
+    cout << "Имя: " << ptr_student->Name << " Возраст: " << (*ptr_student).Age << " Балл: " << (*ptr_student).Ball << endl;
+    cout << endl;
+
+
+    //task 4
+    int number = 10;
+    int* ptr = &number;
+    double* doublePtr = (double*)ptr; 
+    cout << ptr << ' ' << *doublePtr << endl;
+    cout << endl;
+
+
+    //task 5
+    const int N = 20;
+    int mas[N] = { 3, 9, -4, 3323, 0, 1, 2, 3, 4, 5, 0, 667, 9, -3, 0, 78, 6, -23, 19, 0 };
+    int* begin = mas;
+    int* end = mas + N - 1;
+    while (begin < end) {
+        while (begin < end && *begin >= 0) {
+            begin++;
+        }
+        while (begin < end && *end < 0) {
+            end--;
+        }
+        if (begin < end) {
+            std::swap(*begin, *end);
+            begin++;
+            end--;
+        }
+    }
+    for (int* ptr = mas; ptr <= &mas[N - 1]; ptr++)
+    {
+        cout << *ptr << " ";
+    }
+    cout << endl;
+
 };
