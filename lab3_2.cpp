@@ -1,33 +1,106 @@
-
-// lab3.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
-//
-
 #include <iostream>
+#include <random>
 using namespace std;
 
 int main()
 {
     setlocale(LC_ALL, "Russian");
 
-    const int N = 4;
-    int mas[N][N] = { {1, 1, 3, 4}, {5, 6, 0, 8}, {0, 11, 11, 11}, {13, 14, 15, 16} };
+    //на 32-разрядных платформах размер адресов равен 4 байтам, а на 64-разрядных - 8 байтам
 
-    int composition = 1;
+    //task 1
+    int num = 12;
+    int* ptr_num = &num;
+    cout << "Значение указателя ptr_num - " << *ptr_num << ", Адрес указателя - " << ptr_num << endl;
 
-    cout << "Заданный массив: " << endl;
-    for (int i = 0; i < N; i++) {
-        for (int j = 0; j < N; j++) {
-            cout << mas[i][j] << " ";
+    bool flag = true;
+    bool* ptr_flag = &flag;
+    cout << "Значение указателя ptr_flag - " << *ptr_flag << ", Адрес указателя - " << ptr_flag << endl;
+
+    float fnum = 0.1;
+    float* ptr_fnum = &fnum;
+    cout << "Значение указателя ptr_fnum - " << *ptr_fnum << ", Адрес указателя - " << ptr_fnum << endl;
+
+
+    //task 2
+    /*enum days { Monday, Tuesday, Wednesday };
+    typedef days* ptr_days = &days;
+    cout << *ptr_days << endl;*/
+
+
+    //task 3
+    struct Student
+    {
+        string Name;
+        int Age;
+        float Ball;
+    };
+    Student s1 = { "Misha", 23, 8 };
+    Student* ptr_student = &s1;
+    cout << "Имя: " << ptr_student->Name << " Возраст: " << (*ptr_student).Age << " Балл: " << (*ptr_student).Ball << endl;
+    cout << endl;
+
+
+    //task 4
+    int number = 10;
+    int* ptr = &number;
+    double* doublePtr = (double*)ptr;
+    cout << ptr << ' ' << *doublePtr << endl;
+    cout << endl;
+
+
+    //task 5
+    const int N = 20;
+    int mas[N] = { 3, 9, -4, 3323, 0, 1, 2, 3, 4, 5, 0, 667, 9, -3, 0, 78, 6, -23, 19, 0 };
+    int* begin = mas;
+    int* end = mas + N - 1;
+    while (begin < end) {
+        while (begin < end && *begin >= 0) {
+            begin++;
+        }
+        while (begin < end && *end < 0) {
+            end--;
+        }
+        if (begin < end) {
+            std::swap(*begin, *end);
+            begin++;
+            end--;
+        }
+    }
+    for (int* ptr = mas; ptr <= &mas[N - 1]; ptr++)
+    {
+        cout << *ptr << " ";
+    }
+    cout << "\n" << "\n" << endl;
+
+
+    //task 6
+    random_device rd;
+    mt19937 gen(rd());
+    uniform_int_distribution<> dist(0, 30);
+
+    int rows = 4;
+    int cols = 4;
+
+    int** dynamiс_mas{ new int* [rows] {} };
+
+    for (int i = 0; i < rows; i++) {
+        dynamiс_mas[i] = new int[cols] {dist(gen), dist(gen), dist(gen), dist(gen)};
+    }
+    
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            cout << dynamiс_mas[i][j] << " ";
         }
         cout << endl;
-    };
+    }
 
     cout << "Количество столбцов, содержащих хотя бы один нулевой элемент: ";
     int coutOfNull = 0;
-    for (int i = 0; i < N; i++) {
+    for (int i = 0; i < cols; i++) {
         bool flag = false;
-        for (int j = 0; j < N; j++) {
-            if (mas[j][i] == 0) {
+        for (int j = 0; j < rows; j++) {
+            if (dynamiс_mas[j][i] == 0) {
                 flag = true;
             }
         }
@@ -38,22 +111,7 @@ int main()
     };
     cout << coutOfNull << endl;
 
-
-    cout << "Номер строки, в которой находится самая длинная серия одинаковых элементов: ";
-    int stroka;
-    int max_s = 0;
-    for (int i = 0; i < N; i++) {
-        int current = 0;
-        for (int j = 1; j < N; j++) {
-            if (mas[i][j] == mas[i][j - 1]) {
-                current++;
-            }
-        }
-        if (current > max_s) {
-            max_s = current;
-            stroka = i;
-        }
-        current = 0;
-    };
-    cout << stroka + 1 << endl;
+    for (int i = 0; i < rows; i++) {
+        delete dynamiс_mas[i];
+    }
 };
