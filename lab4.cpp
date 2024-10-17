@@ -119,4 +119,4 @@ int main()
     const int nums = 5;
     int mas_task7[nums] = { 1, 2, 3, 4, 5 };
     cout << composition(mas_task7, nums) << endl;
-    };
+};
