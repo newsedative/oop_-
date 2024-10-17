@@ -72,4 +72,51 @@ int main()
     }
     cout << endl;
 
-};
+    //task 6
+    random_device rd;
+    mt19937 gen(rd());
+    uniform_int_distribution<> dist(0, 30);
+    
+    int rows = 4;
+    int cols = 4;
+    
+    int** dynamiс_mas{ new int* [rows] {} };
+    
+    for (int i = 0; i < rows; i++) {
+        dynamiс_mas[i] = new int[cols] {dist(gen), dist(gen), dist(gen), dist(gen)};
+    }
+    
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            cout << dynamiс_mas[i][j] << " ";
+        }
+        cout << endl;
+    }
+    
+    cout << "Количество столбцов, содержащих хотя бы один нулевой элемент: ";
+    int coutOfNull = 0;
+    for (int i = 0; i < cols; i++) {
+        bool flag = false;
+        for (int j = 0; j < rows; j++) {
+            if (dynamiс_mas[j][i] == 0) {
+                flag = true;
+            }
+        }
+        if (flag) {
+            coutOfNull++;
+            flag = false;
+        }
+    };
+    cout << coutOfNull << endl;
+    
+    for (int i = 0; i < rows; i++) {
+        delete dynamiс_mas[i];
+    }
+    cout << endl;
+    
+    
+    //task 7
+    const int nums = 5;
+    int mas_task7[nums] = { 1, 2, 3, 4, 5 };
+    cout << composition(mas_task7, nums) << endl;
+    };
