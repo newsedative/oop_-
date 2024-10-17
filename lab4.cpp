@@ -31,10 +31,10 @@ int sum_of_first_and_end(int* arr, int size) {
    return sum_without_zero;
 }
 
-typedef int (*PF)(int, int);
+typedef int (*PF)(int*, int);
 
 void example(PF ptr_func, int* arr, int size) {
-    cout << "Вызов функции через указатель" << ptr_func(arr, size) << endl;
+    cout << "Вызов функции через указатель " << ptr_func(arr, size) << endl;
 }
 
 int main()
@@ -159,8 +159,5 @@ int main()
 
     //task 8
     example(sum_of_first_and_end, mas_task7, nums);
-    /*Определить функцию, обрабатывающую массив по пункту А) и подпункту 2, передав его в качестве параметра. Объявить указатель на эту функцию и передать 
-    его некой другой функции, имеющей один из возможных параметров указатель на первую функцию.*/
-    /*2.	сумму элементов массива, расположенных между первым и последним нулевым  элементами;*/
 
 };
