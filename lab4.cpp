@@ -2,7 +2,7 @@
 #include <random>
 using namespace std;
 
-int composition(int *arr, int size) {
+int composition(int* arr, int size) {
     int result = 1;
     for (int i = 0; i < size; i++) {
         if ((i + 1) % 2 == 0) {
@@ -28,7 +28,7 @@ int sum_of_first_and_end(int* arr, int size) {
             flag = true;
         };
     };
-   return sum_without_zero;
+    return sum_without_zero;
 }
 
 typedef int (*PF)(int*, int);
@@ -58,9 +58,24 @@ int main()
 
 
     //task 2
-    /*enum days { Monday, Tuesday, Wednesday };
-    typedef days* ptr_days = &days;
-    cout << *ptr_days << endl;*/
+        // Переменная типа перечисление
+    enum class Color { RED, GREEN, BLUE };
+    Color color = Color::RED;
+    const Color* ptrColor = &color;
+    cout << "Цвет через указатель: ";
+    switch (*ptrColor) {
+        case Color::RED:
+            cout << "Красный\n";
+            break;
+        case Color::GREEN:
+            cout << "Зеленый\n";
+            break;
+        case Color::BLUE:
+            cout << "Синий\n";
+            break;
+    }
+
+
 
 
     //task 3
@@ -122,7 +137,7 @@ int main()
     for (int i = 0; i < rows; i++) {
         dynamiс_mas[i] = new int[cols] {dist(gen), dist(gen), dist(gen), dist(gen)};
     }
-    
+
     for (int i = 0; i < rows; i++) {
         for (int j = 0; j < cols; j++) {
             cout << dynamiс_mas[i][j] << " ";
@@ -151,7 +166,7 @@ int main()
     }
     cout << endl;
 
-    
+
     //task 7
     const int nums = 7;
     int mas_task7[nums] = { 1, 2, 0, 4, 5, 6, 0 };
@@ -159,5 +174,52 @@ int main()
 
     //task 8
     example(sum_of_first_and_end, mas_task7, nums);
+
+    //task 9
+    // Объявляем объекты стандартных типов
+    int a = 10;
+    double b = 20.5;
+    char c = 'A';
+
+    struct Point {
+        int x;
+        int y;
+    };
+
+    // Объявляем структуру
+    Point p = { 100, 200 };
+
+    // Объявляем указатели на стандартные типы
+    int* pInt = &a;
+    double* pDouble = &b;
+    char* pChar = &c;
+
+    // Объявляем указатель на структуру
+    Point* pPoint = &p;
+
+    // Вывод значений через обычные указатели
+    cout << "Значения через обычные указатели:" << endl;
+    cout << "*pInt = " << *pInt << endl;
+    cout << "*pDouble = " << *pDouble << endl;
+    cout << "*pChar = " << *pChar << endl;
+    cout << "pPoint->x = " << pPoint->x << ", pPoint->y = " << pPoint->y << endl;
+
+    // Объявляем указатель типа void
+    void* vPtr;
+
+    // Приведение типов и вывод значений через указатель типа void
+    vPtr = static_cast<void*>(&a);
+    cout << "\nЗначения через указатель типа void:" << endl;
+    cout << "*(static_cast<int*>(vPtr)) = " << *(static_cast<int*>(vPtr)) << endl;
+
+    vPtr = static_cast<void*>(&b);
+    cout << "*(static_cast<double*>(vPtr)) = " << *(static_cast<double*>(vPtr)) << endl;
+
+    vPtr = static_cast<void*>(&c);
+    cout << "*(static_cast<char*>(vPtr)) = " << *(static_cast<char*>(vPtr)) << endl;
+
+    vPtr = static_cast<void*>(&p);
+    Point* tempPoint = static_cast<Point*>(vPtr);
+    cout << "tempPoint->x = " << tempPoint->x << ", tempPoint->y = " << tempPoint->y << endl;
 
 };
