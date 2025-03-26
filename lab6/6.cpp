@@ -8,7 +8,7 @@ class Person
 {
     string name;
 public:
-    Person(string p_name): name(p_name) {}
+    Person(string p_name) : name(p_name) {}
     void drive(const Auto&);
 };
 
@@ -19,8 +19,8 @@ private:
     string name;
     int price;
 public:
-    Auto(int a_price): name("none"), price(a_price) {}
-    Auto(string a_name, int a_price): name(a_name), price(a_price) {}
+    Auto(int a_price) : name("none"), price(a_price) {}
+    Auto(string a_name, int a_price) : name(a_name), price(a_price) {}
     Auto(const Auto& a) {
         cout << "constr of copy" << endl;
         name = a.name;
@@ -34,7 +34,7 @@ public:
         price = a.price;
         a.price = 0;
     }
-    Auto operator + (const Auto& a) 
+    Auto operator + (const Auto& a)
     {
         return Auto(price + a.price);
     }
@@ -55,7 +55,7 @@ int main() {
     Auto mazda6(mazda);
     mazda6.print();
 
-    Auto movedMazda(mazda);
+    Auto movedMazda(move(mazda));
 
     Auto plus = mazda + mazda6;
     plus.print();
