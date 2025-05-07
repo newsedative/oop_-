@@ -3,7 +3,7 @@
 #include <Windows.h>
 using namespace std;
 
-class Human
+/*class Human
 {
 protected:
     string name;
@@ -15,6 +15,18 @@ public:
     void print() {
         cout << "Human: " << name << " " << surname << " " << age << endl;
     }
+};*/
+
+class Human
+{
+protected:
+    string name;
+    string surname;
+    int age;
+public:
+    Human() : name(""), surname(""), age(0) {};
+    Human(string h_name, string h_surname, int h_age) : name(h_name), surname(h_surname), age(h_age) {};
+    virtual void print() =0;
 };
 
 class Employee: public Human
@@ -24,7 +36,7 @@ protected:
 public:
     Employee() : specialization(""), Human() {};
     Employee(string e_specialization, string e_name, string e_surname, int e_age) : specialization(e_specialization), Human(e_name, e_surname, e_age) {};
-    void print() {
+    void print() override {
         cout << "Employee: " << specialization << " " << name << " " << surname << " " << age << endl;
     }
 };
@@ -37,7 +49,7 @@ public:
     Student() : group(""), medium_ball(0.0), Employee() {};
     Student(string s_group, float s_medium_ball, string s_specialization, string s_name, string s_surname, int s_age) :
         group(s_group), medium_ball(s_medium_ball), Employee(s_specialization, s_name, s_surname, s_age) {};
-    void print() {
+    void print() override {
         cout << "Student: " << group << " " << medium_ball << " " << specialization << " " << name << " " << surname << " " << age << endl;
     }
 };
@@ -48,8 +60,6 @@ int main() {
     SetConsoleOutputCP(1251);
     setlocale(LC_ALL, "RUS");
 
-    Human dasha("Dasha", "Mashinova", 20);
-    dasha.print();
 
     Student dasha1("IVT-42-23", 4.7, "programming", "Dasha", "Mashinova", 20);
     dasha1.print();
