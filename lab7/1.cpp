@@ -26,14 +26,15 @@ public:
 };
 
 int Word::counter = 1;
-ostream& operator <<(ostream&out, const Word& wtf) {
+ostream& operator <<(ostream& out, const Word& wtf) {
     out << "Word: " << wtf.word << endl;
     return out;
 }
 
-class Stroka: public Word
+class Stroka : public Word
 {
     int len_str;
+    string str;
 public:
     Stroka() : Word(""), len_str(0) {
         cout << "Конструктор по умолчанияю Stroka" << endl;
@@ -44,8 +45,11 @@ public:
     ~Stroka() {
         cout << "Деструктор Stroka" << endl;
     }
+    void input() {
+        getline(cin, str);
+    }
     void print() {
-        cout << len_str << endl;
+        cout << str << endl;
     }
     friend ostream& operator <<(ostream&, const Stroka&);
 };
@@ -60,13 +64,14 @@ int main() {
     SetConsoleOutputCP(1251);
     setlocale(LC_ALL, "RUS");
 
-    Word a("Hello");
-    Stroka b("Hello world", 2);
+    //Word a("Hello");
+    Stroka b;
+    b.input();
 
-    a.print();
+    //a.print();
     b.print();
 
-    cout << a;
+    //cout << a;
     cout << b;
 
     return 0;
