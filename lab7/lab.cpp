@@ -19,7 +19,7 @@ protected:
     int b;
 public:
     B() : b(2), A() {};
-    void print1() {
+    void print() {
         cout << "B: " << a << endl;
     }
 };
@@ -29,7 +29,7 @@ class C : public A
     int c;
 public:
     C() : c(3), A() {};
-    void print2() {
+    void print() {
         cout << "C: " << a << endl;
     }
 };
@@ -40,21 +40,32 @@ public:
 }*/
 
 void demo(C* p) {
-    B* b = dynamic_cast<B*>(p);
-    if (b) b->print1();
+    A* a = dynamic_cast<A*>(p);
+    B* b = dynamic_cast<B*>(a);
+    if (b) b->print();
     else cout << "not work";
 }
 
+void demo(C& p) {
+    try {
+        A& a = dynamic_cast<A&>(p);
+        B& b = dynamic_cast<B&>(a);
+        b.print();
+    }
+    catch (...) {
+        cout << "not work";
+    }
+}
 
 int main() {
     SetConsoleCP(1251);
     SetConsoleOutputCP(1251);
     setlocale(LC_ALL, "RUS");
 
+    C a_m;
+    A& a = a_m;
+    demo((C&)a);
 
-    A* a = new B;
-    demo(*a);
-    
 
     return 0;
 }
