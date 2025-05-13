@@ -16,6 +16,7 @@ enum MenuOption {
     MARK_COMPLETE,
     DELETE_TASK,
     SEARCH_TASK,
+    EDIT_TASK,
     EXIT,
     OPTIONS_COUNT
 };
@@ -186,6 +187,21 @@ void searchTask() {
     return;
 }
 
+void editTaskAction() {
+    if (planner.getTaskCount() > 0) {
+        planner.displayAllTasks();
+        cout << "Введите номер задачи для редактирования: ";
+        size_t index;
+        cin >> index;
+        cin.ignore();
+        planner.editTask(index);
+        cout << "Задача отредактирована.\n";
+    }
+    else {
+        cout << "Нет задач для редактирования.\n";
+    }
+}
+
 int main() {
     SetConsoleCP(1251);
     SetConsoleOutputCP(1251);
@@ -199,8 +215,17 @@ int main() {
         {"Отметить задачу как выполненную", markTaskComplete},
         {"Удалить задачу", deleteTask},
         {"Поиск задач", searchTask},
-        {"Выход", []() { exit(0); }}
+        {"Редактировать задачу", editTaskAction},
+        {"Выход"}
     };
+
+    try {
+        planner.loadFromFile("task.csv");
+        cout << "Задачи успешно загружены из файла.\n";
+    }
+    catch (const exception& e) {
+        cerr << "Ошибка при загрузке: " << e.what() << "\n";
+    }
 
     while (true) {
         cout << "\nМеню:\n";
@@ -211,7 +236,11 @@ int main() {
         int choice;
         cin >> choice;
         if (choice > 0 && choice <= OPTIONS_COUNT) {
+            if (choice == 7) {
+                exit(0);
+            }
             menuItems[choice - 1].action();
+            planner.saveToFile("task.csv");
         }
         else
         {

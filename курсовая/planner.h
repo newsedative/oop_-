@@ -15,4 +15,7 @@ public:
     void searchTasks(const string& keyword) const;
     size_t getTaskCount() const;
     const Task& getTask(size_t index) const;
+    void saveToFile(const string& filename) const;
+    void loadFromFile(const string& filename);
+    void editTask(size_t index);
 };

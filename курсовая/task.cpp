@@ -29,3 +29,29 @@ string Task::getDueDateString() const {
     strftime(buffer, 80, "%d.%m.%Y", &timeinfo);
     return string(buffer);
 }
+
+string Task::toCSV() const {
+    ostringstream oss;
+    oss << getType() << ";"
+        << description << ";"
+        << getDueDateString() << ";"
+        << (isCompleted() ? "1" : "0");
+    return oss.str();
+}
+
+void Task::fromCSV(const string& csvLine) {
+    istringstream ss(csvLine);
+    string token;
+
+    getline(ss, token, ';'); 
+    getline(ss, description, ';');
+
+    getline(ss, token, ';');
+    tm tm = {};
+    istringstream dateStream(token);
+    dateStream >> get_time(&tm, "%d.%m.%Y");
+    dueDate = mktime(&tm);
+
+    getline(ss, token);
+    completed = (token == "1");
+}

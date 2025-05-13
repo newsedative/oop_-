@@ -25,4 +25,8 @@ public:
     string getDescription() const;
     time_t getDueDate() const;
     string getDueDateString() const;
+    virtual string toCSV() const;
+    virtual void fromCSV(const string& csvLine);
+    virtual void setDescription(const string& newDesc) { description = newDesc; }
+    virtual void setDueDate(time_t newDue) { dueDate = newDue; }
 };
