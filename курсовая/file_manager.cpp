@@ -42,7 +42,7 @@ void FileManager::saveToCSV(const string& filename, const vector<unique_ptr<Task
     ofstream file(filename);
     if (!file) return;
 
-    file << "Тип;Описание;Дата;Приоритет;Важность;СтепеньВыполнения\n";
+    file << "Тип;Описание;Дата;СтепеньВыполнения;Важность;Регулярность\n";
 
     for (const auto& task : tasks) {
         file << task->toCSV() << "\n";

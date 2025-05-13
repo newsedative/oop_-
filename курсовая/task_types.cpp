@@ -1,4 +1,3 @@
-// task_types.cpp
 #include "task_types.h"
 #include <iostream>
 #include <iomanip>

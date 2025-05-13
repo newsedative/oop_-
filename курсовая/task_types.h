@@ -1,4 +1,3 @@
-// task_types.h
 #pragma once
 #include "task.h"
 

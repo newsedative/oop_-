@@ -1,4 +1,3 @@
-// task.cpp
 #include "task.h"
 #include <iomanip>
 #include <sstream>

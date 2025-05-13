@@ -203,6 +203,7 @@ void editTaskAction() {
 }
 
 int main() {
+    system("color F0");
     SetConsoleCP(1251);
     SetConsoleOutputCP(1251);
     setlocale(LC_ALL, "RUS");
