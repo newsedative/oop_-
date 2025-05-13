@@ -20,7 +20,7 @@ protected:
 public:
     B() : b(2), A() {};
     void print() {
-        cout << "B: " << a << endl;
+        cout << "B: " << b << endl;
     }
 };
 
@@ -30,7 +30,7 @@ class C : public A
 public:
     C() : c(3), A() {};
     void print() {
-        cout << "C: " << a << endl;
+        cout << "C: " << c << endl;
     }
 };
 
@@ -39,12 +39,12 @@ public:
     b.print();
 }*/
 
-void demo(C* p) {
+/*void demo(C* p) {
     A* a = dynamic_cast<A*>(p);
     B* b = dynamic_cast<B*>(a);
     if (b) b->print();
     else cout << "not work";
-}
+}*/
 
 void demo(C& p) {
     try {
@@ -62,7 +62,7 @@ int main() {
     SetConsoleOutputCP(1251);
     setlocale(LC_ALL, "RUS");
 
-    C a_m;
+    B a_m;
     A& a = a_m;
     demo((C&)a);
 
